@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-var port = process.env.port || 2000;
+var port = process.env.PORT || 2000;
 
 app.get('/', (req, res) => {
     res.send("default routing");
