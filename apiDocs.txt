@@ -1,0 +1,4 @@
+1. List of all courses
+>>>>> http://techvanto.herokuapp.com/allcourses
+2. single course
+>>>>>   http://techvanto.herokuapp.com/allcourses/_id

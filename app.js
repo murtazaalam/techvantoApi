@@ -36,6 +36,15 @@ app.get('/allcourses/:id', (req, res) => {
     })
 })
 
+app.get('/instructor/:course_id', (req, res) => {
+    var courseId = req.params.course_id;
+    var query = {'courses.course_id':courseId}
+    db.collection('instructor').find(query).toArray((err, result) => {
+        if(err) throw err;
+        res.send(result[0]);
+    })
+})
+
 app.get('/category', (req, res) => {
     db.collection('category').find().toArray((err, result) => {
         if(err) throw err;
