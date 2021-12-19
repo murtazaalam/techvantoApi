@@ -3,8 +3,8 @@ var app = express();
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
 dotenv.config();
-var bodyParser = require('body-parser')
-var cors = require('cors')
+var bodyParser = require('body-parser');
+var cors = require('cors');
 var db;
 
 var mongo = require('mongodb');
@@ -27,6 +27,7 @@ app.get('/allcourses', (req, res) => {
         res.send(result);
     })
 })
+
 //course with respect to course id
 app.get('/allcourses/:id', (req, res) => {
     var id = mongoose.Types.ObjectId(req.params.id);
@@ -35,13 +36,23 @@ app.get('/allcourses/:id', (req, res) => {
         res.send(result);
     })
 })
+
 //course with respect to category id
 app.get('/courses/:id', (req, res) => {
     var id = req.params.id;
-    db.collection('courses').find({category_id: id}).toArray((err, result) => {
-        if(err) throw err;
-        res.send(result);
-    })
+    var limitValue = parseInt(req.query.limit_value);
+    if(limitValue){
+        db.collection('courses').find({category_id: id}).limit(limitValue).toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    else{
+        db.collection('courses').find({category_id: id}).toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
 })
 
 app.get('/instructor/:course_id', (req, res) => {
@@ -86,6 +97,7 @@ app.delete('/delete-course/:id', (req, res) => {
     })
 
 })
+
 //update api
 app.put('/edit/:id', (req, res) => {
     var id = mongoose.Types.ObjectId(req.params.id);
