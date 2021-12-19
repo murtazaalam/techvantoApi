@@ -52,6 +52,14 @@ app.get('/category', (req, res) => {
     })
 })
 
+app.get('/category/:id', (req, res) => {
+    var catId = mongoose.Types.ObjectId(req.params.id);
+    db.collection('category').find({_id:catId}).toArray((err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
 //post new course api
 app.post('/newcourse', (req, res) => {
     //console.log(req.body);

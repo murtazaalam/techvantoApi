@@ -2,3 +2,7 @@
 >>>>> http://techvanto.herokuapp.com/allcourses
 2. single course
 >>>>>   http://techvanto.herokuapp.com/allcourses/_id
+3. Instructor detail with respect to course id
+>>>>>  http://techvanto.herokuapp.com/instructor/course_id
+4. All categories
+>>>>>  http://techvanto.herokuapp.com/category
