@@ -27,10 +27,18 @@ app.get('/allcourses', (req, res) => {
         res.send(result);
     })
 })
-
+//course with respect to course id
 app.get('/allcourses/:id', (req, res) => {
     var id = mongoose.Types.ObjectId(req.params.id);
     db.collection('courses').find({_id: id}).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result);
+    })
+})
+//course with respect to category id
+app.get('/courses/:id', (req, res) => {
+    var id = req.params.id;
+    db.collection('courses').find({category_id: id}).toArray((err, result) => {
         if(err) throw err;
         res.send(result);
     })
