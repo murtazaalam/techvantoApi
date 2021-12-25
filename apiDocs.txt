@@ -15,3 +15,6 @@
 
 6. Courses with respect to category id and limit_value
 >>>>> https://techvanto.herokuapp.com/courses/category_id?limit_value=2
+
+6. courses with respect to limit value and skip value
+>>>>> http://techvanto.herokuapp.com/allcourses?skip_value=5&limit_value=6

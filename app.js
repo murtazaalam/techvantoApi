@@ -30,6 +30,12 @@ app.get('/allcourses', (req, res) => {
             res.send(result);
         })
     }
+    else if(limitValue){
+        db.collection('courses').find().limit(limitValue).toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
     else{
         db.collection('courses').find().toArray((err, result) => {
             if(err) throw err;
