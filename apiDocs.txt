@@ -12,3 +12,6 @@
 
 5. Category with respect to category id
 >>>>> http://techvanto.herokuapp.com/category/catId
+
+6. Courses with respect to category id and limit_value
+>>>>> https://techvanto.herokuapp.com/courses/category_id?limit_value=2

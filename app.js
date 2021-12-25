@@ -22,10 +22,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/allcourses', (req, res) => {
-    db.collection('courses').find().toArray((err, result) => {
-        if(err) throw err;
-        res.send(result);
-    })
+    var limitValue = parseInt(req.query.limit_value);
+    var skipValue = parseInt(req.query.skip_value);
+    if(limitValue && skipValue){
+        db.collection('courses').find().skip(skipValue).limit(limitValue).toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    else{
+        db.collection('courses').find().toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
 })
 
 //course with respect to course id
