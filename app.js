@@ -103,6 +103,31 @@ app.post('/newcourse', (req, res) => {
         res.send("New Course Added Successfully.");
     })
 })
+//sold courses
+app.get('/orders', (req, res) => {
+    var email = req.query.email;
+    if(email){
+        db.collection('orders').find({email:email}).toArray((err, result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    else{
+        db.collection('orders').find().toArray((err, result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+})
+
+//buy course api
+app.post('/placeOrder', (req, res)=>{
+    db.collection('orders').insert(req.body, (err, result) => {
+        if(err) throw err;
+        res.send("Order Placed");
+    })
+})
+
 
 //delete api
 app.delete('/delete-course/:id', (req, res) => {
