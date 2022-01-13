@@ -25,6 +25,7 @@ app.get('/allcourses', (req, res) => {
     var limitValue = parseInt(req.query.limit_value);
     var skipValue = parseInt(req.query.skip_value);
     var cost = req.query.cost;
+    var level = req.query.level;
     if(limitValue && skipValue){
         db.collection('courses').find().skip(skipValue).limit(limitValue).toArray((err, result) => {
             if(err) throw err;
@@ -45,6 +46,12 @@ app.get('/allcourses', (req, res) => {
                     res.send(result);
                 })
             }
+        }
+        else if(level){
+            db.collection('courses').find({level:level}).toArray((err, result) => {
+                if(err) throw err;
+                res.send(result);
+            })
         }
         else{
             db.collection('courses').find().toArray((err, result) => {
