@@ -95,7 +95,14 @@ app.get('/courses/:id', (req, res) => {
         })
     }
 })
-
+//add new instructor
+app.post('/add-instructor', (req, res) => {
+    db.collection('instructor').insert(req.body, (err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+//get instructor wrt course
 app.get('/instructor/:course_id', (req, res) => {
     var courseId = req.params.course_id;
     var query = {'courses.course_id':courseId}
