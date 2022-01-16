@@ -158,6 +158,13 @@ app.get('/orders', (req, res) => {
         })
     }
 })
+//create new coupond
+app.post('/create-coupon', (req, res) => {
+    db.collection('coupon').insert(req.body, (err, result) => {
+        if(err) throw err;
+        res.send(result)
+    })
+})
 //get coupon wrt to coupon code
 app.get('/coupon', (req, res) => {
     var code = req.query.code;
