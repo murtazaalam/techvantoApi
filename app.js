@@ -197,7 +197,8 @@ app.put('/edit/:id', (req, res) => {
             "image": req.body.image,
             "rating": req.body.rating,
             "trainer_name": req.body.trainer_name,
-            "level": req.body.level
+            "level": req.body.level,
+            "status": req.body.status
         }
     })
     res.send("Course Updated Successfully.")
