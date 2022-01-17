@@ -121,6 +121,13 @@ app.get('/instructor/:course_id', (req, res) => {
         res.send(result[0]);
     })
 })
+//all instructors
+app.get('/instructors', (req, res) => {
+    db.collection('instructor').find().toArray((err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
 
 app.get('/category', (req, res) => {
     db.collection('category').find().toArray((err, result) => {
