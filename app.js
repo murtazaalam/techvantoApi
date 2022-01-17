@@ -27,14 +27,15 @@ app.get('/allcourses', (req, res) => {
     var cost = req.query.cost;
     var level = req.query.level;
     var courseName = req.query.course_name;
+    var status = req.query.status;
     if(limitValue && skipValue){
-        db.collection('courses').find().skip(skipValue).limit(limitValue).toArray((err, result) => {
+        db.collection('courses').find({status:'active'}).skip(skipValue).limit(limitValue).toArray((err, result) => {
             if(err) throw err;
             res.send(result);
         })
     }
     else if(limitValue){
-        db.collection('courses').find().limit(limitValue).toArray((err, result) => {
+        db.collection('courses').find({status:'active'}).limit(limitValue).toArray((err, result) => {
             if(err) throw err;
             res.send(result);
         })
@@ -42,29 +43,38 @@ app.get('/allcourses', (req, res) => {
     else{
         if(cost){
             if(cost == "0"){
-                db.collection('courses').find({price:cost}).toArray((err, result) => {
+                db.collection('courses').find({$and: [{status:'active'},{price:cost}]}).toArray((err, result) => {
                     if(err) throw err;
                     res.send(result);
                 })
             }
         }
         else if(level){
-            db.collection('courses').find({level:level}).toArray((err, result) => {
+            db.collection('courses').find({$and:[{status:'active'},{level:level}]}).toArray((err, result) => {
                 if(err) throw err;
                 res.send(result);
             })
         }
         else if(courseName){
-            db.collection('courses').find({sub_category_name:courseName}).toArray((err, result) => {
+            db.collection('courses').find({$and:[{status:'active'},{sub_category_name:courseName}]}).toArray((err, result) => {
                 if(err) throw err;
                 res.send(result);
             })
         }
         else{
-            db.collection('courses').find().toArray((err, result) => {
-                if(err) throw err;
-                res.send(result);
-            })
+            if(status){
+                db.collection('courses').find({status:'active'}).toArray((err, result) => {
+                    if(err) throw err;
+                    res.send(result);
+                })
+            }
+            else{
+                db.collection('courses').find().toArray((err, result) => {
+                    if(err) throw err;
+                    res.send(result);
+                })
+            }
+            
         } 
     }
 })
@@ -83,13 +93,13 @@ app.get('/courses/:id', (req, res) => {
     var id = req.params.id;
     var limitValue = parseInt(req.query.limit_value);
     if(limitValue){
-        db.collection('courses').find({category_id: id}).limit(limitValue).toArray((err, result) => {
+        db.collection('courses').find({$and:[{status:'active'},{category_id: id}]}).limit(limitValue).toArray((err, result) => {
             if(err) throw err;
             res.send(result);
         })
     }
     else{
-        db.collection('courses').find({category_id: id}).toArray((err, result) => {
+        db.collection('courses').find({$and:[{status:'active'},{category_id: id}]}).toArray((err, result) => {
             if(err) throw err;
             res.send(result);
         })
@@ -97,7 +107,7 @@ app.get('/courses/:id', (req, res) => {
 })
 //add new instructor
 app.post('/add-instructor', (req, res) => {
-    db.collection('instructor').insert(req.body, (err, result) => {
+    db.collection('instructor').insertOne(req.body, (err, result) => {
         if(err) throw err;
         res.send(result);
     })
@@ -130,7 +140,7 @@ app.get('/category/:id', (req, res) => {
 //post new course api
 app.post('/newcourse', (req, res) => {
     //console.log(req.body);
-    db.collection('courses').insert(req.body, (err, result) => {
+    db.collection('courses').insertOne(req.body, (err, result) => {
         if(err) throw err;
         res.send("New Course Added Successfully.");
     })
@@ -167,7 +177,7 @@ app.get('/orders', (req, res) => {
 })
 //create new coupond
 app.post('/create-coupon', (req, res) => {
-    db.collection('coupon').insert(req.body, (err, result) => {
+    db.collection('coupon').insertOne(req.body, (err, result) => {
         if(err) throw err;
         res.send(result)
     })
@@ -182,7 +192,7 @@ app.get('/coupon', (req, res) => {
 })
 //buy course api
 app.post('/placeOrder', (req, res)=>{
-    db.collection('orders').insert(req.body, (err, result) => {
+    db.collection('orders').insertOne(req.body, (err, result) => {
         if(err) throw err;
         res.send("Order Placed");
     })
