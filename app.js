@@ -192,10 +192,19 @@ app.post('/create-coupon', (req, res) => {
 //get coupon wrt to coupon code
 app.get('/coupon', (req, res) => {
     var code = req.query.code;
-    db.collection('coupon').find({code:code}).toArray((err, result) => {
-        if(err) throw err;
-        res.send(result);
-    })
+    if(code){
+        db.collection('coupon').find({code:code}).toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    else{
+        db.collection('coupon').find().toArray((err, result) => {
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    
 })
 //buy course api
 app.post('/placeOrder', (req, res)=>{
