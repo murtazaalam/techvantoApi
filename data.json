@@ -1,0 +1,83 @@
+[
+    {
+        "category":"For School",
+        "course_name":"Python",
+        "price":"499",
+        "discounted_price":"400",
+        "discount_limit_hour":"4",
+        "duration":"32",
+        "lession":"6",
+        "enrolled":"50",
+        "access":"lifetime",
+        "description":"Sales is the main revenue source for any company. Without that, a company will crumble and it is universally acknowledged truth that Sales is the backbone of any organization. It plays an important role for the company to withstand the market.",
+        "video":"https://youtu.be/oOm66m59jLc",
+        "curriculum":[
+            {
+                "heading":"What Is Sales ?",
+                "detail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Opening Sales Pitches",
+                "detail":"Opening ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Building Creative Calling Structures",
+                "detail":"Building ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            }
+        ]
+    },
+    {
+        "category":"For College",
+        "course_name":"Web Development",
+        "price":"699",
+        "discounted_price":"600",
+        "discount_limit_hour":"16",
+        "duration":"32",
+        "lession":"10",
+        "enrolled":"25",
+        "access":"lifetime",
+        "description":"Web Development is the main revenue source for any company. Without that, a company will crumble and it is universally acknowledged truth that Sales is the backbone of any organization. It plays an important role for the company to withstand the market.",
+        "thumbnail":"https://i.ibb.co/Vmr3SjH/entrepreneurship.jpg",
+        "curriculum":[
+            {
+                "heading":"What Is Web Development ?",
+                "detail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Opening Web Development",
+                "detail":"Opening ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Building Creative Web Development Structures",
+                "detail":"Building ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            }
+        ]
+    },
+    {
+        "category":"For Intermediate",
+        "course_name":"Intermediate Course",
+        "price":"799",
+        "discounted_price":"700",
+        "discount_limit_hour":"8",
+        "duration":"18",
+        "lession":"10",
+        "enrolled":"58",
+        "access":"lifetime",
+        "description":"Digital Marketing is the main revenue source for any company. Without that, a company will crumble and it is universally acknowledged truth that Sales is the backbone of any organization. It plays an important role for the company to withstand the market.",
+        "thumbnail":"https://i.ibb.co/Vmr3SjH/entrepreneurship.jpg",
+        "curriculum":[
+            {
+                "heading":"What Is Digital Marketing ?",
+                "detail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Opening Digital Marketing",
+                "detail":"Opening ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            },
+            {
+                "heading":"Building Creative Digital Marketing Structures",
+                "detail":"Building ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+            }
+        ]
+    }
+]

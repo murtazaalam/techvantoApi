@@ -20,7 +20,19 @@ var port = process.env.PORT || 2000;
 app.get('/', (req, res) => {
     res.send("default routing");
 })
-
+app.get('/course-list', (req, res) => {
+    db.collection('techvanto_courses').find().toArray((err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+app.get('/course-list/:id', (req, res) => {
+    var id = mongoose.Types.ObjectId(req.params.id);
+    db.collection('techvanto_courses').find({_id: id}).toArray((err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
 app.get('/allcourses', (req, res) => {
     var limitValue = parseInt(req.query.limit_value);
     var skipValue = parseInt(req.query.skip_value);
