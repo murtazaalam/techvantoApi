@@ -20,6 +20,7 @@ var port = process.env.PORT || 2000;
 app.get('/', (req, res) => {
     res.send("default routing");
 })
+//for office api
 app.get('/course-list', (req, res) => {
     db.collection('techvanto_courses').find().toArray((err, result) => {
         if(err) throw err;
@@ -33,6 +34,23 @@ app.get('/course-list/:id', (req, res) => {
         res.send(result);
     })
 })
+
+app.get('/techvanto-events', (req, res) => {
+    var category = req.query.category;
+    if(category){
+        db.collection('techvanto_events').find({category:category}).toArray((err, result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    else{
+        db.collection('techvanto_events').find().toArray((err, result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+})
+//end of office api
 app.get('/allcourses', (req, res) => {
     var limitValue = parseInt(req.query.limit_value);
     var skipValue = parseInt(req.query.skip_value);
