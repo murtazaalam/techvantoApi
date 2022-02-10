@@ -50,6 +50,13 @@ app.get('/techvanto-events', (req, res) => {
         })
     }
 })
+app.get('/techvanto-events/:id', (req, res) => {
+    var id = mongoose.Types.ObjectId(req.params.id);
+    db.collection('techvanto_events').find({_id: id}).toArray((err, result) => {
+        if(err) throw err;
+        res.send(result);
+    })
+})
 //end of office api
 app.get('/allcourses', (req, res) => {
     var limitValue = parseInt(req.query.limit_value);
